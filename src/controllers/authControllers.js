@@ -6,15 +6,7 @@ export const register = async (req, res) => {
 
       const {username, password, email} = req.body;
 
-      if(!username || !password || !email)
-        return res.status(400).json({
-          error: "All fields required!"
-        });
-
-      if(typeof password !== "number" || username !== "string")
-        return res.status(400).json({
-          error: "Invalid cridentials."
-        })
+    
   }catch(err){
     console.log('Something went wrong.', err)
   }
@@ -32,7 +24,7 @@ export const login = async (req, res) => {
 export const logout = async (req, res) => {
   try{
 
-    
+
 
   }catch(err){
     console.log('Something went wrong.', err)

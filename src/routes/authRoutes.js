@@ -10,3 +10,5 @@ router.post("/login", login);
 router.post("/logout", logout);
 router.patch("/update-password", updatePassword);
 router.get("/me", getMe);
+
+export default router;
