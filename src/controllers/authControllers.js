@@ -92,7 +92,7 @@ export const login = async (req, res) => {
       })
     };
 
-    const isMatch = await bcrypt.compare(password, User.password)
+    const isMatch = await bcrypt.compare(password, user.password)
     if(!isMatch){
       return res.status(401).json({
         error: "Invalid email or Password."
@@ -100,6 +100,7 @@ export const login = async (req, res) => {
     };
 
     const token = jwt.sign({id: user.id, email: user.email}, process.env.JWT_ACCESS_SECRET, {expiresIn: '15m'})
+    
         
       res.status(200).json({
             message: "Login successful.",
@@ -144,7 +145,7 @@ export const getMe = async (req, res) => {
   try{
 
     const user = await prisma.user.findUnique({
-      where: {id: id.user.id},
+      where: {id: req.user.id},
       select: {
         id: true,
         username: true,
