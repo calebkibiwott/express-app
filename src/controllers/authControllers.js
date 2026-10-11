@@ -119,33 +119,14 @@ export const login = async (req, res) => {
   }
 }
 
-export const logout = async (req, res) => {
-  try{
-    return res.status(200).json({
-      message: "Logged out successfully."
-    })
-  }catch(err){
-    console.log('Logout error.', err);
-    res.status(500).json({
-      error: "Something went wrong. Please try again later."
-    })
-  }
-}
-
-export const updatePassword = async (req, res) => {
-  try{
-
-  }catch(err){
-    console.log('Something went wrong.', err)
-  }
-}
-
 
 export const getMe = async (req, res) => {
   try{
 
+    // const {id} = req.params;
+
     const user = await prisma.user.findUnique({
-      where: {id: req.user.id},
+      // where: {id},
       select: {
         id: true,
         username: true,
@@ -164,6 +145,29 @@ export const getMe = async (req, res) => {
   }catch(err){
     console.log('getMe error', err)
     return res.status(500).json({
+      error: "Something went wrong. Please try again later."
+    })
+  }
+
+}
+
+export const updatePassword = async (req, res) => {
+  try{
+
+  }catch(err){
+    console.log('Something went wrong.', err)
+  }
+}
+
+
+export const logout = async (req, res) => {
+  try{
+    return res.status(200).json({
+      message: "Logged out successfully."
+    })
+  }catch(err){
+    console.log('Logout error.', err);
+    res.status(500).json({
       error: "Something went wrong. Please try again later."
     })
   }
