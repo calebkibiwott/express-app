@@ -1,7 +1,8 @@
 import dotenv from "dotenv"
 import express from "express";
 import cookieParser from "cookie-parser";
-import authRoutes from "./routes/authRoutes.js"
+import authRoutes from "./routes/authRoutes.js";
+import postRoutes from "./routes/postRoutes.js"
 
 dotenv.config();
 
@@ -11,7 +12,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
-
+app.use("/api/post", postRoutes);
 
 
 const port = 3000;

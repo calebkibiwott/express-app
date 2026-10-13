@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
+model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   username  String   @unique
@@ -22,6 +22,6 @@ model post {
   content String
   title String
   createdAt DateTime @default(now())
-  authorId Int
-  author   user @relation(fields: [authorId], references: [id])
+  userId Int
+  user User @relation(fields: [userId], references: [id])
 }
